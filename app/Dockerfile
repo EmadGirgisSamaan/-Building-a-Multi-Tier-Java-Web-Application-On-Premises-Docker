@@ -6,7 +6,7 @@ WORKDIR /src
 RUN git clone --depth 1 -b main https://github.com/hkhcoder/vprofile-project.git .
 RUN mvn package -DskipTests -B -ntp
 
-# ---------- Phase 2: Running it on Tomcat 9 ----------
+# ---------- Phase 2: Running it on Tomcat 9 -----------
 FROM tomcat:9.0-jdk11-temurin
 RUN rm -rf /usr/local/tomcat/webapps/*
 COPY --from=build /src/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
